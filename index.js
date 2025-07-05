@@ -1,59 +1,36 @@
-const quizData = [
-    {
-      question: "What is the capital of France?",
-      options: ["Paris", "Madrid", "Rome", "Berlin"],
-      answer: "Paris"
-    },
-    {
-      question: "What is the largest planet in our solar system?",
-      options: ["Jupiter", "Saturn", "Mars", "Earth"],
-      answer: "Jupiter"
-    },
-    // Add more questions here...
-  ];
-  
-  const questionElement = document.getElementById("question");
-  const optionsElement = document.getElementById("options");
-  const submitButton = document.getElementById("submit");
-  
-  let currentQuestion = 0;
-  let score = 0;
-  
-  function showQuestion() {
-    const question = quizData[currentQuestion];
-    questionElement.innerText = question.question;
-  
-    optionsElement.innerHTML = "";
-    question.options.forEach(option => {
-      const button = document.createElement("button");
-      button.innerText = option;
-      optionsElement.appendChild(button);
-      button.addEventListener("click", selectAnswer);
-    });
+// Array containing the questions
+var questions = [
+  "What is the capital of Spain?",
+  "Who won the FIFA Women's World Cup in 2019?",
+  "What is the smallest country in the world?",
+  "Who invented the telephone?",
+  "What is the tallest mountain in the world?"
+];
+
+// Function to select a random question from the array
+function getRandomQuestion() {
+  var randomIndex = Math.floor(Math.random() * questions.length);
+  return questions[randomIndex];
+}
+
+// Function to display the quiz
+function displayQuiz(maxQuestions) {
+  var quiz = document.getElementById("quiz");
+  var numQuestionsDisplayed = 0;
+
+  // Loop until max number of questions are displayed
+  while (numQuestionsDisplayed < maxQuestions) {
+    var question = getRandomQuestion();
+
+    // Add the question to the quiz
+    var questionDiv = document.createElement("div");
+    questionDiv.innerHTML = question;
+    quiz.appendChild(questionDiv);
+
+    // Increment the number of questions displayed
+    numQuestionsDisplayed++;
   }
-  
-  function selectAnswer(e) {
-    const selectedButton = e.target;
-    const answer = quizData[currentQuestion].answer;
-  
-    if (selectedButton.innerText === answer) {
-      score++;
-    }
-  
-    currentQuestion++;
-  
-    if (currentQuestion < quizData.length) {
-      showQuestion();
-    } else {
-      showResult();
-    }
-  }
-  
-  function showResult() {
-    quiz.innerHTML = `
-      <h1>Quiz Completed!</h1>
-      <p>Your score: ${score}/${quizData.length}</p>
-    `;
-  }
-  
-  showQuestion();
+}
+
+// Call the function to display the quiz (10 questions in this example)
+displayQuiz(10);
