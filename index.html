@@ -1,17 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Tom's Quiz</title>
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tom's Quiz App</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="quiz">
-    <h1>Interactive Quiz | By Thomas Wilson</h1>
-    <div id="question"></div>
-    <div id="options"></div>
-    <button id="submit">Submit</button>
+  <div class="quiz-container">
+    <h1>Tom's Quiz</h1>
+    <div id="question-container">
+      <p id="question">Loading question...</p>
+      <div id="answers"></div>
+    </div>
+    <div id="result"></div>
+    <button id="next-btn">Next</button>
   </div>
 
-  <script src="index.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
